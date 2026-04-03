@@ -1,0 +1,236 @@
+$bg-dark: #1e1e1e;       // JetBrains primary background
+$bg-deep: #191919;       // Slightly deeper background for panels
+$border-color: #333;     // Existing bottom border color
+$text-main: #afafaf;     // Dull text
+$text-bright: #d0d0d0;   // Bright text
+$accent-green: #37b34a;  // Existing login button color
+$accent-blue: #3d86f7;   // Blue status/info color
+
+.workspace-container {
+  display: flex;
+  height: calc(100vh - 50px); // Fill the viewport below the navbar
+  background-color: $bg-deep;
+  color: $text-main;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  overflow: hidden;
+
+  // -- Main Content Area --
+  .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: $bg-deep;
+    overflow-y: auto;
+
+    .workspace-header {
+      background-color: $bg-dark;
+      height: 36px;
+      border-bottom: 1px solid $border-color;
+      display: flex;
+      align-items: flex-end;
+
+      .tabs {
+        .tab {
+          padding: 8px 16px;
+          border-right: 1px solid $border-color;
+          color: $text-bright;
+          font-size: 13px;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          cursor: pointer;
+
+          &.active {
+            color: #fff;
+            border-bottom: 2px solid $accent-green;
+          }
+
+          .icon { font-size: 1.1em; }
+        }
+      }
+    }
+
+    .workspace-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+
+      .welcome-card {
+        padding: 32px;
+        background-color: $bg-dark;
+        border-radius: 6px;
+        border: 1px solid $border-color;
+
+        h1 { margin: 0 0 10px 0; color: #fff; font-size: 28px; }
+        p { margin: 0 0 24px 0; color: #888; }
+
+        .quick-actions {
+          display: flex;
+          gap: 12px;
+
+          button {
+            padding: 8px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+          }
+
+          .btn-primary {
+            background-color: $accent-green;
+            color: white;
+            border: none;
+            &:hover { background-color: #33a143; }
+          }
+          .btn-secondary {
+            background-color: $bg-deep;
+            color: #fff;
+            border: 1px solid $border-color;
+            &:hover { background-color: #2a2a2a; }
+          }
+        }
+      }
+
+      .recent-projects {
+        .panel-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 12px;
+
+          h3 { margin: 0; color: $text-bright; font-size: 16px; }
+          .search-input {
+            background-color: $bg-dark;
+            border: 1px solid $border-color;
+            border-radius: 4px;
+            padding: 4px 10px;
+            color: $text-bright;
+            font-size: 13px;
+            &:focus { outline: none; border-color: #555; }
+          }
+        }
+
+        .project-list {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+
+          .project-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background-color: $bg-dark;
+            border-radius: 4px;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: border-color 0.2s;
+
+            &:hover { border-color: #444; }
+            &.active { border-color: $accent-green; }
+
+            .proj-icon { font-size: 1.5em; color: #fff; }
+            .proj-details {
+              flex: 1;
+              display: flex;
+              flex-direction: column;
+              .proj-name { color: #fff; font-weight: 600; margin-bottom: 2px; }
+              .proj-meta { color: #888; font-size: 12px; font-family: 'JetBrains Mono', 'Courier New', monospace; }
+            }
+            .proj-actions {
+              display: flex;
+              gap: 4px;
+              opacity: 0.4;
+              transition: opacity 0.2s;
+            }
+            &:hover .proj-actions { opacity: 1; }
+          }
+        }
+      }
+    }
+  }
+
+  // -- Right Sidebar (like AI Chat in screenshot) --
+  .right-sidebar {
+    width: 320px;
+    background-color: $bg-dark;
+    border-left: 1px solid $border-color;
+    display: flex;
+    flex-direction: column;
+
+    .sidebar-header {
+      height: 36px;
+      padding: 0 12px;
+      border-bottom: 1px solid $border-color;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: $text-bright;
+      font-size: 13px;
+    }
+
+    .sidebar-content {
+      padding: 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      h5 { margin: 0 0 12px 0; color: #fff; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; color: #888;}
+
+      .info-card {
+        padding: 12px;
+        border-radius: 4px;
+        font-size: 13px;
+        line-height: 1.4;
+
+        &.info-blue {
+          background-color: rgba($accent-blue, 0.1);
+          border: 1px solid rgba($accent-blue, 0.3);
+          h4 { margin: 0 0 6px 0; color: #fff; }
+          p { margin: 0; color: $text-bright; }
+          a { color: $accent-blue; }
+        }
+      }
+
+      .tool-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
+        li {
+          background-color: #2d2d2d;
+          border-radius: 4px;
+          padding: 8px 12px;
+          color: $text-bright;
+          font-size: 13px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          cursor: pointer;
+          &:hover { background-color: #3d3d3d; }
+          .icon { opacity: 0.7; }
+        }
+      }
+
+      .activity-feed {
+        .feed-item {
+          margin: 0 0 8px 0;
+          font-size: 12px;
+          color: #888;
+          line-height: 1.4;
+          code { font-family: monospace; color: $text-bright; background: rgba(255,255,255,0.05); padding: 1px 4px; border-radius: 3px; }
+        }
+      }
+    }
+  }
+}
+
+// Global button reset
+button { border: none; background: transparent; cursor: pointer; color: inherit; padding: 0;}
+.btn-icon { padding: 4px 6px; border-radius: 3px; font-size: 1.1em; color: $text-bright; &:hover { background-color: #2d2d2d; }}
+.btn-icon-close { font-size: 1.6em; opacity: 0.5; color: #fff; &:hover { opacity: 1; }}

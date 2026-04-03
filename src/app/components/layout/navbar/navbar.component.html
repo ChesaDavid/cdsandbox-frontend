@@ -1,0 +1,12 @@
+<nav class="navbar">
+  <div class="nav-left">
+    <span class="logo">{{ projectName }}</span>
+    <span class="project-name"></span>
+  </div>
+
+  <div class="nav-right" *ngFor="let item of navbarComponent">
+    <button class="btn-run" [routerLink]="item.path">
+      {{ item.name }}
+    </button>
+  </div>
+</nav>
