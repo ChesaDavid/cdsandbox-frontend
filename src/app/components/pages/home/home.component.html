@@ -1,73 +1,46 @@
-<main class="workspace-container">
-  <section class="main-content">
-    <header class="workspace-header">
-      <div class="tabs">
-        <span class="tab active">
-          <span class="icon folder-icon">📁</span> Project Dashboard
-        </span>
-      </div>
-    </header>
+<main class="landing-container">
 
-    <div class="workspace-body">
-      <div class="welcome-card">
-        <h1>Welcome, User! //</h1>
-        <p>Select a project to start coding or view recent activity.</p>
-        <div class="quick-actions">
-          <button class="btn-primary">
-            <span class="icon">+</span> New Project
-          </button>
-          <button class="btn-secondary">Import from VC</button>
-        </div>
-      </div>
+  <header class="public-header animate-fade-down">
+    <div class="logo">{{ projectName }}</div>
+    <div class="itec-pill">{{ itecPillar }}</div>
+  </header>
 
-      <div class="panel-section recent-projects">
-        <header class="panel-header">
-          <h3>Your Projects</h3>
-          <input type="search" placeholder="Search projects..." class="search-input" />
-        </header>
+  <section class="hero-section">
+    <div class="hero-content animate-pop-in">
+      <h1 class="animate-tracking-in-expand">Code. Together. Now.</h1>
+      <p class="hero-tagline animate-fade-in-delayed">
+        A fluid workspace where humans and AI agents build the future of software, side-by-side, in real-time.
+      </p>
 
-        <div class="project-list">
-          <div class="project-item active" *ngFor="let proj of projects">
-            <div class="proj-icon">{{proj.icon}}</div>
-            <div class="proj-details">
-              <span class="proj-name">{{proj.name}}</span>
-              <span class="proj-meta">Last synced {{proj.updated}} // {{proj.status}}</span>
-            </div>
-            <div class="proj-actions">
-              <button class="btn-icon">⚡</button>
-              <button class="btn-icon">⚙️</button>
-            </div>
-          </div>
-        </div>
+      <div class="hero-cta animate-fade-in-delayed-more">
+        <a routerLink="/login" class="btn-main-login">
+          Enter the Sandbox <span class="icon">→</span>
+        </a>
       </div>
     </div>
   </section>
 
-  <aside class="right-sidebar">
-    <header class="sidebar-header">
-      <span>Project Details</span>
-      <button class="btn-icon-close">×</button>
-    </header>
-    <div class="sidebar-content">
-      <div class="info-card info-blue">
-        <h4>Setup Required</h4>
-        <p>Configure your Docker sandbox environment to enable terminal access. <a href="#">Learn more.</a></p>
+  <section class="features-section">
+    <div class="section-divider animate-fade-in">Pillars of the Probe //</div>
+
+    <div class="features-grid">
+      <div class="feature-card animate-scroll-fade-up">
+        <div class="feature-icon">✨</div>
+        <h3>Fluid Collaboration</h3>
+        <p>A multi-presence, multi-cursor environment where you see changes instantly. No Git conflicts, just immediate synchronization.</p>
       </div>
 
-      <div class="section-group">
-        <h5>Tools & Resources</h5>
-        <ul class="tool-list">
-          <li><span class="icon">📖</span> View Documentation</li>
-          <li><span class="icon">🔍</span> Dependency Check</li>
-          <li><span class="icon">📦</span> Package Manager</li>
-        </ul>
+      <div class="feature-card animate-scroll-fade-up">
+        <div class="feature-icon">🤖</div>
+        <h3>AI "Notion-Style" Editor</h3>
+        <p>AI-generated code is served as accepting blocks. Visually distinct, easily audited, and integrated naturally into your codebase.</p>
       </div>
 
-      <div class="activity-feed">
-        <h5>Recent Events</h5>
-        <p class="feed-item">Commit <code>fe7a1b</code> pushed by Admin (2m ago)</p>
-        <p class="feed-item">Sandbox <code>python-dev</code> started (15m ago)</p>
+      <div class="feature-card animate-scroll-fade-up">
+        <div class="feature-icon">📦</div>
+        <h3>Isolated Environments</h3>
+        <p>Run your Python, Node, and Rust code securely within Docker containers managed by your .NET backend. Full terminal access without security risks.</p>
       </div>
     </div>
-  </aside>
+  </section>
 </main>

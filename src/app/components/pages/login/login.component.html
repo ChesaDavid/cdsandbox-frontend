@@ -1,0 +1,26 @@
+<div class="login-container">
+  <div class="login-box">
+    <header>
+      <span class="logo">cdsandbox //</span>
+      <h1>Welcome back.</h1>
+    </header>
+
+    <form (submit)="onLogin($event)">
+      <div class="input-group">
+        <label>Email</label>
+        <input type="email" name="email" [(ngModel)]="email" required placeholder="name@example.com">
+      </div>
+
+      <div class="input-group">
+        <label>Password</label>
+        <input type="password" name="password" [(ngModel)]="password" required placeholder="••••••••">
+      </div>
+
+      <button type="submit" class="btn-login" [disabled]="isLoading">
+        {{ isLoading ? 'Verifying...' : 'Login to Sandbox' }}
+      </button>
+
+      <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+    </form>
+  </div>
+</div>

@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+/* Remove default browser spacing */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #191919; /* Match your $bg-deep color */
+  overflow: hidden; /* Prevents double scrollbars */
+}
+
+/* Ensure padding/borders don't push width/height out */
+* {
+  box-sizing: border-box;
+}

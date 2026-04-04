@@ -1,0 +1,115 @@
+$bg-deep: #191919;       // Background
+$bg-dark: #1e1e1e;       // Card background
+$border-color: #333;     // Lines
+$text-main: #afafaf;     // Dull text
+$accent-green: #37b34a;  // Login / Primary button
+$error-red: #f44336;
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  background-color: $bg-deep;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.login-box {
+  width: 100%;
+  max-width: 400px;
+  padding: 40px;
+  background-color: $bg-dark;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+
+  header {
+    text-align: center;
+    margin-bottom: 32px;
+
+    .logo {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      color: $accent-green;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      margin: 0;
+      color: #fff;
+      font-size: 24px;
+      font-weight: 600;
+    }
+  }
+}
+
+.input-group {
+  margin-bottom: 20px;
+
+  label {
+    display: block;
+    color: $text-main;
+    font-size: 13px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  input {
+    width: 100%;
+    padding: 12px;
+    background-color: $bg-deep;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+    transition: border-color 0.2s;
+
+    &:focus {
+      outline: none;
+      border-color: $accent-green;
+    }
+
+    &::placeholder {
+      color: #555;
+    }
+  }
+}
+
+.btn-login {
+  width: 100%;
+  padding: 12px;
+  background-color: $accent-green;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+
+  &:hover:not(:disabled) {
+    background-color: #33a143;
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.error {
+  margin-top: 16px;
+  color: $error-red;
+  font-size: 13px;
+  text-align: center;
+  background: rgba($error-red, 0.1);
+  padding: 8px;
+  border-radius: 4px;
+}
