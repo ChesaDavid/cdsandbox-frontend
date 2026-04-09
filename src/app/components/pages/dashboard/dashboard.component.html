@@ -2,21 +2,40 @@
   <section class="main-content">
     <header class="workspace-header">
       <div class="tabs">
-        <span class="tab active">
-          <span class="icon folder-icon">📁</span> Project Dashboard
+        <span class="tab active" [routerLink]="linkProfile">
+          <span class="icon folder-icon" >📁</span> Profile
         </span>
       </div>
     </header>
 
     <div class="workspace-body">
       <div class="welcome-card">
-        <h1>Welcome, User! //</h1>
+        <h1>Welcome, {{currentUser()?.username}} //</h1>
         <p>Select a project to start coding or view recent activity.</p>
         <div class="quick-actions">
-          <button class="btn-primary">
+          <button class="btn-primary" (click)="showNewProjectModal.set(true)">
             <span class="icon">+</span> New Project
           </button>
-          <button class="btn-secondary">Import from VC</button>
+
+          @if (showNewProjectModal()) {
+            <div class="modal-overlay">
+              <div class="modal-content">
+                <h3>Create New Project</h3>
+
+                <label>Name</label>
+                <input [(ngModel)]="projectName" placeholder="e.g. My Node App" class="modal-input" />
+
+                <label>Description</label>
+                <textarea [(ngModel)]="projectDescription" placeholder="What is this project for?" class="modal-input"></textarea>
+
+                <div class="modal-actions">
+                  <button (click)="showNewProjectModal.set(false)">Cancel</button>
+                  <button class="btn-primary" (click)="createProject()" [disabled]="!projectName">Create</button>
+                </div>
+              </div>
+            </div>
+          }
+          <button class="btn-secondary">Enter project</button>
         </div>
       </div>
 
@@ -27,47 +46,50 @@
         </header>
 
         <div class="project-list">
-<!--          <div class="project-item active" *ngFor="let proj of projects">-->
-<!--            <div class="proj-icon">{{pro.icon}}</div>-->
-<!--            <div class="proj-details">-->
-<!--              <span class="proj-name">{{proj.name?}}</span>-->
-<!--              <span class="proj-meta">Last synced {{proj.updated}} // {{proj.status}}</span>-->
-<!--            </div>-->
-<!--            <div class="proj-actions">-->
-<!--              <button class="btn-icon">⚡</button>-->
-<!--              <button class="btn-icon">⚙️</button>-->
-<!--            </div>-->
-<!--          </div>-->
+          @for (proj of projects(); track proj.id) {
+            <div class="project-item">
+              <div class="proj-icon">📦</div>
+              <div class="proj-details">
+                <span class="proj-name">{{ proj.name }}</span>
+                <span class="proj-meta">Key: {{ proj.entryCode }}</span>
+              </div>
+              <div class="proj-actions">
+               <button class="btn-icon" >⚡ Open</button> <!--(click)="openEditor(proj)"-->
+              </div>
+            </div>
+          } @empty {
+            <p>No projects found. Create your first one!</p>
+          }
         </div>
       </div>
     </div>
   </section>
 
-  <aside class="right-sidebar">
-    <header class="sidebar-header">
-      <span>Project Details</span>
-      <button class="btn-icon-close">×</button>
-    </header>
-    <div class="sidebar-content">
-      <div class="info-card info-blue">
-        <h4>Setup Required</h4>
-        <p>Configure your Docker sandbox environment to enable terminal access. <a href="#">Learn more.</a></p>
-      </div>
+<!--  <aside class="right-sidebar " [class.hidden]="isSidebarVisible()">-->
+<!--    <header class="sidebar-header">-->
+<!--      <span>Project Details</span>-->
+<!--      <button class="btn-icon-close" (click)="toggleSidebarVisibility()">×</button>-->
+<!--    </header>-->
+<!--    <div class="sidebar-content">-->
+<!--      <div class="info-card info-blue">-->
+<!--        <h4>Setup Required</h4>-->
+<!--        <p>Configure your Docker sandbox environment to enable terminal access. <a href="#">Learn more.</a></p>-->
+<!--      </div>-->
 
-      <div class="section-group">
-        <h5>Tools & Resources</h5>
-        <ul class="tool-list">
-          <li><span class="icon">📖</span> View Documentation</li>
-          <li><span class="icon">🔍</span> Dependency Check</li>
-          <li><span class="icon">📦</span> Package Manager</li>
-        </ul>
-      </div>
+<!--      <div class="section-group">-->
+<!--        <h5>Tools & Resources</h5>-->
+<!--        <ul class="tool-list">-->
+<!--          <li><span class="icon">📖</span> View Documentation</li>-->
+<!--          <li><span class="icon">🔍</span> Dependency Check</li>-->
+<!--          <li><span class="icon">📦</span> Package Manager</li>-->
+<!--        </ul>-->
+<!--      </div>-->
 
-      <div class="activity-feed">
-        <h5>Recent Events</h5>
-        <p class="feed-item">Commit <code>fe7a1b</code> pushed by Admin (2m ago)</p>
-        <p class="feed-item">Sandbox <code>python-dev</code> started (15m ago)</p>
-      </div>
-    </div>
-  </aside>
+<!--      <div class="activity-feed">-->
+<!--        <h5>Recent Events</h5>-->
+<!--        <p class="feed-item">Commit <code>fe7a1b</code> pushed by Admin (2m ago)</p>-->
+<!--        <p class="feed-item">Sandbox <code>python-dev</code> started (15m ago)</p>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </aside>-->
 </main>

@@ -13,8 +13,8 @@
       </p>
 
       <div class="hero-cta animate-fade-in-delayed-more">
-        <a routerLink="/login" class="btn-main-login">
-          Enter the Sandbox <span class="icon">→</span>
+        <a routerLink="{{linkToEnter}}" class="btn-main-login">
+          {{ authService.isLoggedIn() ? 'Go to Dashboard' : 'Sign In' }}
         </a>
       </div>
     </div>

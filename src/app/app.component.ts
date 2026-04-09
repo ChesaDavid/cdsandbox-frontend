@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {NavbarComponent} from "./components/layout/navbar/navbar.component";
+import {AuthService} from "./services/auth.service";
 
 @Component({
   selector: 'app-root',
@@ -10,5 +11,8 @@ import {NavbarComponent} from "./components/layout/navbar/navbar.component";
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+  authServiec = inject(AuthService);
   title = 'cdsandbox-frontend';
+  isUserLoggedIn =  this.authServiec.isLoggedIn();
+
 }

@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {Router} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {AuthService} from "../../../services/auth.service";
 import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
@@ -7,7 +7,7 @@ import {CommonModule} from "@angular/common";
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -19,6 +19,7 @@ export class LoginComponent{
   password = '';
   isLoading = false;
   errorMessage = '';
+  private http: any;
 
   onLogin(event:Event){
     event.preventDefault();
@@ -32,4 +33,17 @@ export class LoginComponent{
       }
     })
   }
+  // onLogin() {
+  //   this.http.post('http://localhost:5154/api/auth/login', {
+  //     email: this.email,
+  //     password: this.password
+  //   }).subscribe({
+  //     next: (user: any) => {
+  //       this.authService.setSession(user); // Save the user!
+  //       this.router.navigate(['/dashboard']); // Go to dashboard
+  //     },
+  //     error: () => this.errorMessage = "Invalid credentials"
+  //   });
+  // }
+
 }

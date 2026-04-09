@@ -19,6 +19,9 @@
       <button type="submit" class="btn-login" [disabled]="isLoading">
         {{ isLoading ? 'Verifying...' : 'Login to Sandbox' }}
       </button>
+      <a class="register-link" routerLink="/register" >
+        Don't have an account
+      </a>
 
       <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
     </form>

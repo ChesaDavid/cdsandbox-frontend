@@ -229,7 +229,33 @@ $accent-blue: #3d86f7;   // Blue status/info color
     }
   }
 }
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.7); // Darken background
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
 
+.modal-content {
+  background: #1e1e1e; // Matches VS Code dark theme
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid #333;
+  width: 400px;
+}
+
+.modal-input {
+  width: 100%;
+  padding: 10px;
+  margin: 1rem 0;
+  background: #252526;
+  color: white;
+  border: 1px solid #444;
+}
 // Global button reset
 button { border: none; background: transparent; cursor: pointer; color: inherit; padding: 0;}
 .btn-icon { padding: 4px 6px; border-radius: 3px; font-size: 1.1em; color: $text-bright; &:hover { background-color: #2d2d2d; }}

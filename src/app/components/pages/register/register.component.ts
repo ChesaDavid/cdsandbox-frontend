@@ -20,10 +20,17 @@ export class RegisterComponent {
   password = '';
 
   onRegister() {
-    const userData = { name: this.name, email: this.email, password: this.password };
+    const userData = {
+      Username: this.name,
+      Email: this.email,
+      PasswordHash: this.password
+    };
+
     this.http.post('http://localhost:5154/api/auth/register', userData).subscribe({
-      next: () => this.router.navigate(['/login']),
-      error: (err) => console.error('Registration failed', err)
+      next: (response: any) => {
+        this.router.navigate(['/dashboard']);
+      },
+      error: (err) => console.error(err)
     });
   }
 }

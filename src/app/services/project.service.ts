@@ -15,4 +15,7 @@ export class ProjectService {
   getProjectById(id: number): Observable<Project> {
     return this.http.get<Project>(`${this.apiUrl}/${id}`);
   }
+  updateProject(id: string, data: any) {
+    return this.http.put(`http://localhost:5154/api/projects/${id}`, data);
+  }
 }

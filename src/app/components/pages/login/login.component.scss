@@ -113,3 +113,13 @@ $error-red: #f44336;
   padding: 8px;
   border-radius: 4px;
 }
+.register-link{
+  margin-top: 8px;
+  color: $text-main;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
